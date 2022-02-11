@@ -1,0 +1,93 @@
+#buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.button{
+    height: 200px;
+    width: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: rgb(58, 58, 87);
+    background-color: white;
+    border-radius: 15px;
+    border: rgb(58, 58, 87) 2px solid;
+}
+
+.button:hover{
+    color: white;
+    background-color: rgb(58, 58, 87) ;
+    cursor: pointer;
+}
+
+#animalButton {
+    width: 400px;
+    height: 400px
+}
+
+.container2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.band{
+    height: 200px;
+    width: 200px;
+    border: rgb(58, 58, 87) 2px solid;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 20px;
+    background-size: cover;
+    color: rgb(58, 58, 87);
+    position: relative;
+}
+
+
+
+.post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 250px;
+    width: 300px;
+    border: rgb(58, 58, 87) 2px solid;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-left: 20px;
+    color: rgb(58, 58, 87);
+}
+input[type='text'] {
+    width: 85%;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #232323;
+    color: #232323;
+    background-color: blanchedalmond;
+}
+.add-band{
+    height: 50px;
+    width: 200px;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: rgb(58, 58, 87);
+    background-color: white;
+    border-radius: 15px;
+    border: rgb(58, 58, 87) 2px solid;
+}
+.add-band:hover{
+    color: white;
+    background-color: rgb(58, 58, 87) ;
+    cursor: pointer;
+}
+.active-band{
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 400px;
+}
