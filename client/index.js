@@ -24,14 +24,40 @@ document.getElementById("animalButton").onclick = () => {
         })
 }
 
+/////////////////////////////////////////////////////////////////////
+const bandContainer = document.querySelector('.band-container')
+
 const getAllArtists = () => {
     axios
         .get("http://localhost:4000/api/bands")
-        .then( res => createArtistCards(res.data))
+        .then( (res) => {
+            createArtistCards(res.data)
+            console.log(res.data);
+        })
 }
 
 const createArtistCards = (arr) => {
-
+    bandContainer.innerHTML = ''
+    let acArray = []
+    for (let i = 0; i < arr.length; i++) {
+        const artistCard = document.createElement('div')
+        artistCard.classList.add('band')
+        artistCard.style.backgroundImage = `url('${arr[i].imageURL}')`
+        artistCard.innerHTML =`<h3>${arr[i].name}</h3> <h2>${arr[i].genre}</h2>`
+        // if(i === 1){
+        //     artistCard.classList.add('active')
+        // }
+        artistCard.addEventListener('click', () => {
+            bandContainer.innerHTML = ''
+            acArray.forEach(artist => artist.classList.remove('active'))
+            artistCard.classList.add('active')
+            for (let i = 0; i < acArray.length; i++){
+            document.querySelector('.band-container').appendChild(acArray[i])
+            }
+        })
+        acArray.push(artistCard)
+        document.querySelector('.band-container').appendChild(artistCard)
+    }
 }
 
 function submitHandler(e) {
@@ -53,3 +79,24 @@ function submitHandler(e) {
     genre.value = ''
     imageURL.value = ''
 }
+
+getAllArtists();
+
+
+// const artists = document.getElementsByClassName("band")
+// console.log(artists[0]);
+
+//for (let i = 0; i < artists.length)
+
+// artists.forEach((band) => {
+//     band.addEventListener('click', () => {
+//         removeActiveClasses()
+//         band.classList.add('active')
+//     })
+// })
+
+// function removeActiveClasses() {
+//     artists.forEach(band => {
+//     artists.classList.remove('active')
+//     })
+// }
