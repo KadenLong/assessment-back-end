@@ -24,17 +24,24 @@ document.getElementById("animalButton").onclick = () => {
         })
 }
 
+const form = document.querySelector('form')
 /////////////////////////////////////////////////////////////////////
+
+
+
 const bandContainer = document.querySelector('.band-container')
 
 const getAllArtists = () => {
     axios
-        .get("http://localhost:4000/api/bands")
-        .then( (res) => {
-            createArtistCards(res.data)
-            console.log(res.data);
-        })
+    .get("http://localhost:4000/api/bands")
+    .then( (res) => {
+        createArtistCards(res.data)
+    })
 }
+const createArtist = body => axios.post("http://localhost:4000/api/bands", body).then(res => createArtistCards(res.data))
+
+
+
 
 const createArtistCards = (arr) => {
     bandContainer.innerHTML = ''
@@ -44,9 +51,9 @@ const createArtistCards = (arr) => {
         artistCard.classList.add('band')
         artistCard.style.backgroundImage = `url('${arr[i].imageURL}')`
         artistCard.innerHTML =`<h3>${arr[i].name}</h3> <h2>${arr[i].genre}</h2>`
-        // if(i === 1){
-        //     artistCard.classList.add('active')
-        // }
+        if(i === 1){
+            artistCard.classList.add('active')
+        }
         artistCard.addEventListener('click', () => {
             bandContainer.innerHTML = ''
             acArray.forEach(artist => artist.classList.remove('active'))
@@ -70,7 +77,7 @@ function submitHandler(e) {
     let bodyObj = {
         name: name.value,
         genre: genre.value, 
-        imageURL: band-img.value
+        imageURL: imageURL.value
     }
 
     createArtist(bodyObj)
@@ -80,23 +87,10 @@ function submitHandler(e) {
     imageURL.value = ''
 }
 
+form.addEventListener('submit', submitHandler)
+
 getAllArtists();
 
 
-// const artists = document.getElementsByClassName("band")
-// console.log(artists[0]);
 
-//for (let i = 0; i < artists.length)
 
-// artists.forEach((band) => {
-//     band.addEventListener('click', () => {
-//         removeActiveClasses()
-//         band.classList.add('active')
-//     })
-// })
-
-// function removeActiveClasses() {
-//     artists.forEach(band => {
-//     artists.classList.remove('active')
-//     })
-// }

@@ -12,5 +12,6 @@ app.get("/api/compliment", ctrl.getCompliment);
 app.get("/api/truth", ctrl.getTruth)
 app.get("/api/animal", ctrl.getAnimal)
 app.get("/api/bands", ctrl.getAllBands)
+app.post("/api/bands", ctrl.createBand)
 
 app.listen(4000, () => console.log("Server running on 4000"));

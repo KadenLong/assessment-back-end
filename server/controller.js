@@ -1,15 +1,20 @@
+let globalId = 4;
+
 let bands = [
     {
+        id : 1,
         name : "Northlane",
         genre : 'Metalcore',
         imageURL : "https://lastfm.freetls.fastly.net/i/u/ar0/a44606eddcf52feed3664e5358448246.jpg"
     },
     {
+        id : 2,
         name : "J. Cole",
         genre : "Rap/Hip-hop",
         imageURL : "https://i.scdn.co/image/ab6761610000e5ebadd503b411a712e277895c8a"
     },
     {
+        id : 3,
         name : "Twenty-One Pilots",
         genre : "Alternative",
         imageURL : "https://www.washingtonpost.com/rf/image_1484w/2010-2019/WashingtonPost/2016/05/31/Style/Images/twentyonepilots.promo4-JabariJacobs2.jpg?t=20170517"
@@ -54,5 +59,18 @@ module.exports = {
     },
     getAllBands : (req, res) => {
         res.status(200).send(bands)
+    },
+    createBand : (req, res) => {
+        let {name, genre, imageURL} = req.body
+        let newBand = {
+            id : globalId,
+            name,
+            genre,
+            imageURL
+        }
+        bands.push(newBand);
+        res.status(200).send(bands)
+        globalId++
+        console.log(bands)
     }
 }
